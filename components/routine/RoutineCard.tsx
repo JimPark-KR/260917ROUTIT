@@ -4,10 +4,10 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { runOnJS, useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { RoutineCardProps } from './types';
+import { ROUTINE_SWIPE_THRESHOLD } from '../../src/config/routineConfig';
 
-// 위로 스와이프했다고 인정하는 최소 이동 거리(px, 음수 = 위쪽 방향)
-// TODO(선택): 프로젝트 설정값으로 분리해 화면 크기별로 조정 가능하게 만들 수 있음
-export const SWIPE_THRESHOLD = -100;
+// 프로젝트 설정값(src/config/routineConfig.ts)을 그대로 재노출 (하위 호환용)
+export const SWIPE_THRESHOLD = ROUTINE_SWIPE_THRESHOLD;
 
 export function RoutineCard({ routine, onComplete, onOpenCamera }: RoutineCardProps) {
   const translateY = useSharedValue(0);

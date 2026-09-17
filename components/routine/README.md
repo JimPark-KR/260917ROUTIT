@@ -12,7 +12,7 @@
 | 파일 | 역할 |
 | --- | --- |
 | `types.ts` | `Routine`, 각 컴포넌트 Props 타입 정의 |
-| `RoutineCard.tsx` | 스와이프 제스처 + 완료/카메라 오픈 트리거를 가진 개별 카드. `SWIPE_THRESHOLD` 상수로 스와이프 인정 거리 조절 |
+| `RoutineCard.tsx` | 스와이프 제스처 + 완료/카메라 오픈 트리거를 가진 개별 카드. 스와이프 인정 거리는 `src/config/routineConfig.ts`의 `ROUTINE_SWIPE_THRESHOLD` 값으로 조절 (하위 호환을 위해 `SWIPE_THRESHOLD`로도 재노출) |
 | `RoutineCameraScreen.tsx` | `expo-camera` 기반 전체화면 카메라 모달 (권한 요청 포함) |
 | `RoutineListScreen.tsx` | 카드 목록 렌더링 + 카메라 모달 상태 관리. `routines`/`onComplete`/`onPhotoTaken`을 prop으로 받는 순수 프레젠테이션 컴포넌트 |
 
@@ -54,3 +54,11 @@ const handleComplete = (routineId: string, photoUri?: string) => {
 - [ ] 사진을 Firebase Storage에 업로드하고 다운로드 URL을 저장 (`RoutineCameraScreen.tsx`)
 - [ ] 루틴 완료 기록을 Firestore에 저장 (`src/hooks/useRoutines.ts`)
 - [ ] 루틴 CRUD(추가/수정/삭제) 화면 연동
+
+## 설정값
+
+`src/config/routineConfig.ts`에서 프로젝트 전역 설정값을 관리합니다.
+
+| 값 | 설명 |
+| --- | --- |
+| `ROUTINE_SWIPE_THRESHOLD` | 위로 스와이프했다고 인정하는 최소 이동 거리(px, 음수 = 위쪽 방향) |
